@@ -1,6 +1,8 @@
 # MicroManager
 
 A lightweight desktop application for managing .NET Core microservices on your local machine.
+![image](https://github.com/user-attachments/assets/f6a4e883-ecb2-4f66-8f57-64bb69a1ed56) 
+
 
 ## Features
 
