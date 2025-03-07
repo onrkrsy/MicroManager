@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MicroManager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>MicroManager</h1>
+      <p>Manage your .NET Core microservices</p>
+    </header>
+    
+    <div class="main-content">
+      <div class="services-panel">
+        <div class="panel-header">
+          <h2>Services</h2>
+          <button id="add-service-btn" class="btn primary">Add Service</button>
+        </div>
+        
+        <div id="services-list" class="services-list">
+          <!-- Services will be added here dynamically -->
+          <div class="empty-state">
+            <p>No services added yet</p>
+            <p>Click "Add Service" to get started</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="logs-panel">
+        <div class="panel-header">
+          <h2>Logs</h2>
+          <div class="log-controls">
+            <select id="log-service-selector">
+              <option value="all">All Services</option>
+            </select>
+            <button id="clear-logs-btn" class="btn secondary">Clear</button>
+          </div>
+        </div>
+        
+        <div id="log-container" class="log-container">
+          <!-- Logs will be added here dynamically -->
+          <div class="empty-state">
+            <p>No logs to display</p>
+            <p>Start a service to see logs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Add Service Modal -->
+  <div id="add-service-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Add New Service</h2>
+        <span class="close-modal">&times;</span>
+      </div>
+      <div class="modal-body">
+        <form id="add-service-form">
+          <div class="form-group">
+            <label for="service-name">Service Name</label>
+            <input type="text" id="service-name" required>
+          </div>
+          <div class="form-group">
+            <label for="service-path">Bin Directory Path</label>
+            <div class="path-input">
+              <input type="text" id="service-path" required>
+              <button type="button" id="browse-btn" class="btn secondary">Browse</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="service-executable">Executable (optional)</label>
+            <input type="text" id="service-executable" placeholder="Leave empty to auto-detect">
+          </div>
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="service-dev-mode" checked>
+              Run in Development mode
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="button" id="cancel-add-service" class="btn secondary">Cancel</button>
+            <button type="submit" class="btn primary">Add Service</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="renderer.js"></script>
+</body>
+</html> 
