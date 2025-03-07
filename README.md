@@ -1,6 +1,72 @@
 # MicroManager
+Özellikle polyrepo (çoklu repo) projelerde, bağımlı servisleri manuel olarak başlatma zahmetini ortadan kaldıran bir yardımcı araçtır. Sadece .NET Core projeleri için tasarlanmıştır ve uygulamanızı açmadan, ilgili servisleri kolayca başlatıp durdurmanıza olanak tanır. Bu sayede, geliştirme ve test süreçlerinde daha verimli bir çalışma ortamı sağlar. 
+
+Yerel makinenizdeki .NET Core microservice'leri yönetmek için ufak bir masaüstü uygulaması.
+
+![image](https://github.com/user-attachments/assets/f6a4e883-ecb2-4f66-8f57-64bb69a1ed56) 
+## Özellikler
+
+- .NET Core microservice'leri tek tıklamayla başlatma ve durdurma
+- Servislerinizden gerçek zamanlı konsol loglarını görüntüleme
+- Bin dizinini belirterek kolayca yeni servisler ekleme
+- Servisleri ASPNETCORE_ENVIRONMENT değişkeni Development olarak ayarlanmış şekilde çalıştırma
+- Her servis için Git branch bilgisini görüntüleme
+- Servis yapılandırmalarını uygulama yeniden başlatmaları arasında saklama
+- Tüm microservice'lerinizin durumunu tek bir yerden izleme
+- Tam genişlikte arayüz ve kompakt log görüntüleme
+
+## Gereksinimler
+
+- Node.js 14+ ve npm
+- Windows işletim sistemi (.NET Core servisleri çalıştırmak için)
+- Çalıştırılabilir binary'lere sahip .NET Core microservice'leri
+- Git (isteğe bağlı, branch tespiti için)
+
+## Geliştirme Ortamı Kurulumu
+
+1. Bu repository'yi klonlayın
+2. Bağımlılıkları yükleyin:
+   ```
+   npm install
+   ```
+3. Uygulamayı başlatın:
+   ```
+   npm run dev
+   ```
+
+## Derleme ve Dağıtım Seçenekleri
+
+Uygulamayı derlemek ve dağıtmak için birkaç yöntem bulunmaktadır:
+
+### Geliştirme Modu
+```
+npm start             # Normal geliştirme modu
+npm run dev           # Gelişmiş loglama ile geliştirme modu
+```
+
+### Dağıtım için Derleme
+```
+npm run build         # electron-builder ile derleme (kurulum dosyası oluşturur)
+npm run build:portable # Portable versiyon oluşturma (tek çalıştırılabilir dosya)
+npm run build:zip     # Zip dosyası olarak paketleme
+npm run package       # electron-packager ile portable dizin oluşturma
+```
+
+Her derleme seçeneği hakkında detaylı bilgi için [BUILD-OPTIONS.md](BUILD-OPTIONS.md) dosyasına bakınız.
+
+## Kullanım
+
+1. Bin dizininin yolunu belirterek .NET Core microservice'lerinizi ekleyin
+2. İsterseniz servisi Development modunda çalıştırmayı seçin
+3. Servisleri kontrol etmek için başlat/durdur düğmelerini kullanın
+4. Log panelinde konsol çıktısını görüntüleyin
+5. Her servis için Git branch bilgisini görün  
+
+
+# MicroManager (English)
 
 A lightweight desktop application for managing .NET Core microservices on your local machine.
+
 ![image](https://github.com/user-attachments/assets/f6a4e883-ecb2-4f66-8f57-64bb69a1ed56) 
 
 
@@ -61,79 +127,6 @@ For detailed instructions on each build option, see [BUILD-OPTIONS.md](BUILD-OPT
 3. Use the start/stop buttons to control each service
 4. View the console output in the log panel
 5. See Git branch information for each service
-6. Services will be remembered between application restarts
-7. Access the About information from the Help menu
 
-## License
 
-MIT
-
----
-
-# MicroManager (Türkçe)
-
-Yerel makinenizdeki .NET Core microservice'leri yönetmek için ufak bir masaüstü uygulaması.
-
-## Özellikler
-
-- .NET Core microservice'leri tek tıklamayla başlatma ve durdurma
-- Servislerinizden gerçek zamanlı konsol loglarını görüntüleme
-- Bin dizinini belirterek kolayca yeni servisler ekleme
-- Servisleri ASPNETCORE_ENVIRONMENT değişkeni Development olarak ayarlanmış şekilde çalıştırma
-- Her servis için Git branch bilgisini görüntüleme
-- Servis yapılandırmalarını uygulama yeniden başlatmaları arasında saklama
-- Tüm microservice'lerinizin durumunu tek bir yerden izleme
-- Tam genişlikte arayüz ve kompakt log görüntüleme
-
-## Gereksinimler
-
-- Node.js 14+ ve npm
-- Windows işletim sistemi (.NET Core servisleri çalıştırmak için)
-- Çalıştırılabilir binary'lere sahip .NET Core microservice'leri
-- Git (isteğe bağlı, branch tespiti için)
-
-## Geliştirme Ortamı Kurulumu
-
-1. Bu repository'yi klonlayın
-2. Bağımlılıkları yükleyin:
-   ```
-   npm install
-   ```
-3. Uygulamayı başlatın:
-   ```
-   npm run dev
-   ```
-
-## Derleme ve Dağıtım Seçenekleri
-
-Uygulamayı derlemek ve dağıtmak için birkaç yöntem bulunmaktadır:
-
-### Geliştirme Modu
-```
-npm start             # Normal geliştirme modu
-npm run dev           # Gelişmiş loglama ile geliştirme modu
-```
-
-### Dağıtım için Derleme
-```
-npm run build         # electron-builder ile derleme (kurulum dosyası oluşturur)
-npm run build:portable # Portable versiyon oluşturma (tek çalıştırılabilir dosya)
-npm run build:zip     # Zip dosyası olarak paketleme
-npm run package       # electron-packager ile portable dizin oluşturma
-```
-
-Her derleme seçeneği hakkında detaylı bilgi için [BUILD-OPTIONS.md](BUILD-OPTIONS.md) dosyasına bakınız.
-
-## Kullanım
-
-1. Bin dizininin yolunu belirterek .NET Core microservice'lerinizi ekleyin
-2. Servisi Development modunda çalıştırmayı seçin
-3. Servisleri kontrol etmek için başlat/durdur düğmelerini kullanın
-4. Log panelinde konsol çıktısını görüntüleyin
-5. Her servis için Git branch bilgisini görün
-6. Servisler uygulama yeniden başlatmaları arasında hatırlanacaktır
-7. Yardım menüsünden Hakkında bilgilerine erişin
-
-## Lisans
-
-MIT 
+ 
